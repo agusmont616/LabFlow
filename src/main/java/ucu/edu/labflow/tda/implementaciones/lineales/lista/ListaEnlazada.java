@@ -63,7 +63,7 @@ public class ListaEnlazada<T> implements TDALista<T> {
     private Nodo<T> cabeza;
 
     /** Cantidad de elementos. Se mantiene sincronizado con la cadena de nodos. */
-    private int tamaño;
+    private int tamanio;
 
     /**
      * Inserta {@code elem} al final recorriendo toda la cadena hasta el
@@ -79,7 +79,7 @@ public class ListaEnlazada<T> implements TDALista<T> {
             while (actual.siguiente != null) actual = actual.siguiente;
             actual.siguiente = nuevo;
         }
-        tamaño++;
+        tamanio++;
     }
 
     /**
@@ -93,19 +93,19 @@ public class ListaEnlazada<T> implements TDALista<T> {
      */
     @Override
     public void agregar(int index, T elem) {
-        if (index < 0 || index > tamaño) throw new IndexOutOfBoundsException(index);
+        if (index < 0 || index > tamanio) throw new IndexOutOfBoundsException(index);
         if (index == 0) {
             Nodo<T> nuevo = new Nodo<>(elem);
             nuevo.siguiente = cabeza;
             cabeza = nuevo;
-            tamaño++;
+            tamanio++;
             return;
         }
         Nodo<T> previo = nodoEn(index - 1);
         Nodo<T> nuevo = new Nodo<>(elem);
         nuevo.siguiente = previo.siguiente;
         previo.siguiente = nuevo;
-        tamaño++;
+        tamanio++;
     }
 
     /** Acceso por índice. Costo: O(index) por el recorrido. */
@@ -136,7 +136,7 @@ public class ListaEnlazada<T> implements TDALista<T> {
             dato = previo.siguiente.dato;
             previo.siguiente = previo.siguiente.siguiente;
         }
-        tamaño--;
+        tamanio--;
         return dato;
     }
 
@@ -153,7 +153,7 @@ public class ListaEnlazada<T> implements TDALista<T> {
             if (Objects.equals(actual.dato, elem)) {
                 if (previo == null) cabeza = actual.siguiente;
                 else previo.siguiente = actual.siguiente;
-                tamaño--;
+                tamanio--;
                 return true;
             }
             previo = actual;
@@ -201,7 +201,7 @@ public class ListaEnlazada<T> implements TDALista<T> {
     @Override
     @SuppressWarnings("unchecked")
     public TDALista<T> ordenar(Comparator<T> comparator) {
-        Object[] buffer = new Object[tamaño];
+        Object[] buffer = new Object[tamanio];
         int i = 0;
         for (Nodo<T> n = cabeza; n != null; n = n.siguiente) buffer[i++] = n.dato;
         Arrays.sort((T[]) buffer, comparator);
@@ -213,7 +213,7 @@ public class ListaEnlazada<T> implements TDALista<T> {
     /** O(1): se mantiene un contador. */
     @Override
     public int tamaño() {
-        return tamaño;
+        return tamanio;
     }
 
     /** O(1): basta con mirar la cabeza. */
@@ -229,7 +229,7 @@ public class ListaEnlazada<T> implements TDALista<T> {
     @Override
     public void vaciar() {
         cabeza = null;
-        tamaño = 0;
+        tamanio = 0;
     }
 
     /**
@@ -255,6 +255,10 @@ public class ListaEnlazada<T> implements TDALista<T> {
     }
 
     private void validarIndice(int index) {
-        if (index < 0 || index >= tamaño) throw new IndexOutOfBoundsException(index);
+        if (index < 0 || index >= tamanio) throw new IndexOutOfBoundsException(index);
+    }
+
+    public int getTamanio() {
+        return tamanio;
     }
 }
