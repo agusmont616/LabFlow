@@ -30,7 +30,7 @@ public class GestorDatasets {
         }
     }
 
-    public ConjuntoSobreEnlazada listarDatasets() {
+    public ConjuntoSobreEnlazada<Dataset> listarDatasets() {
         return datasets;
     }
 }
