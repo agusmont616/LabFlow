@@ -13,5 +13,23 @@ public class Dataset {
         this.tipoProblema = tipoProb;
     }
 
+    //getters
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getTamanio() {
+        return tamanio;
+    }
+
+    public String getTipoProblema() {
+        return tipoProblema;
+    }
+
     
 }
