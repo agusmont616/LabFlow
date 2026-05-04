@@ -12,4 +12,22 @@ public class Modelo {
         this.tipoModelo = tipoMod;
         this.parametros = param;
     }
+
+    //getters
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTipoModelo() {
+        return tipoModelo;
+    }
+
+    public String getParametros() {
+        return parametros;
+    }
 }
