@@ -2,6 +2,7 @@ package ucu.edu.labflow.servicio;
 
 import ucu.edu.labflow.modelo.*;
 import ucu.edu.labflow.tda.implementaciones.lineales.cola.ColaEnlazada;
+import ucu.edu.labflow.tda.implementaciones.lineales.lista.ListaEnlazada;
 import java.util.Random;
 
 public class SimuladorEjecucion {
@@ -12,12 +13,12 @@ public class SimuladorEjecucion {
         3. historial de experimentos*/ 
     
     private ColaEnlazada<Experimento> pendientes;
-    private ColaEnlazada<Experimento> historial;
+    private ListaEnlazada<Experimento> historial;
     private Random random;
 
     public SimuladorEjecucion() {
         this.pendientes = new ColaEnlazada<>();
-        this.historial = new ColaEnlazada<>();
+        this.historial = new ListaEnlazada<>();
         this.random = new Random();
     }
 
@@ -40,10 +41,10 @@ public class SimuladorEjecucion {
         e.setResultado(resultado);
         e.setEstado(EstadoExperimento.EJECUTADO);
 
-        this.historial.poneEnCola(e);
+        this.historial.agregar(e);
     }
 
-    public ColaEnlazada<Experimento> getHistorial() {
+    public ListaEnlazada<Experimento> getHistorial() {
         return historial;
     }
 }

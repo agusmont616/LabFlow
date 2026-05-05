@@ -3,6 +3,8 @@ package ucu.edu.labflow.servicio;
 import ucu.edu.labflow.tda.implementaciones.lineales.lista.ListaEnlazada;
 import ucu.edu.labflow.modelo.Experimento;
 import ucu.edu.labflow.modelo.Dataset;
+import ucu.edu.labflow.modelo.Modelo;
+
 
 
 public class GestorExperimentos {
@@ -18,8 +20,9 @@ public class GestorExperimentos {
         this.experimentos = new ListaEnlazada<>();
     }
 
-    public void registrar(Experimento experimento) {
+    public boolean registrar(Experimento experimento) {
         experimentos.agregar(experimento);
+        return true;
     }
 
     public ListaEnlazada<Experimento> listarExperimentos() {
@@ -40,4 +43,20 @@ public class GestorExperimentos {
 
         return resultado;
     }
+
+    public ListaEnlazada<Experimento> listarPorModelo(Modelo modelo) {
+        ListaEnlazada <Experimento> resultado = new ListaEnlazada<>();
+
+        for (int i = 0; i < experimentos.getTamanio(); i++) {
+
+            Experimento experimento = experimentos.obtener(i);
+
+            if (experimento.getModelo() == modelo) {
+                resultado.agregar(experimento);
+            }
+        }
+
+        return resultado;
+    }
+    
 }

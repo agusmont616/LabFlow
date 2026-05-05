@@ -7,11 +7,11 @@ public class Experimento {
     private EstadoExperimento estado;
     private ResultadoExperimento resultado;
 
-    public Experimento(int id, Dataset dataset, Modelo modelo, EstadoExperimento estado) {
+    public Experimento(int id, Dataset dataset, Modelo modelo) {
         this.id = id;
         this.dataset = dataset;
         this.modelo = modelo;
-        this.estado = estado;
+        this.estado = EstadoExperimento.PENDIENTE;
         this.resultado = null;
     }
 

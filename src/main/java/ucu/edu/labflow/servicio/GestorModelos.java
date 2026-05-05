@@ -15,17 +15,27 @@ public class GestorModelos {
         this.modelos = new ConjuntoSobreEnlazada<>();
     }
 
-    public void registrarModelo(Modelo modelo) {
-        modelos.agregar(modelo);
+    public boolean registrarModelo(Modelo modelo) {
+        if (!modelos.contiene(modelo)){
+            modelos.agregar(modelo);
+            return true;
+        }
+
+        return false;
     }
 
     public Modelo buscarPorId(String id) {
         return modelos.buscar(m -> m.getId().equals(id));
     }
 
-    public void eliminarModelo(String id) {
+    public boolean eliminarModelo(String id) {
         Modelo modelo = buscarPorId(id);
-        modelos.remover(modelo);
+        if (modelos.contiene(modelo)) {
+            modelos.remover(modelo);
+            return true;
+        }
+        return false;
+        
     }
 
     public ConjuntoSobreEnlazada<Modelo> listarModelos() {
