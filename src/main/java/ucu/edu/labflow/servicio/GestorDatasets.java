@@ -15,19 +15,26 @@ public class GestorDatasets {
         this.datasets = new ConjuntoSobreEnlazada<>();
     }
 
-    public void registrar(Dataset dataset) {
-        datasets.agregar(dataset);
+    public boolean registrar(Dataset dataset) {
+        if (!datasets.contiene(dataset)){
+            datasets.agregar(dataset);
+            return true;
+        }
+
+        return false;
     }
 
     public Dataset buscarPorId(String id) {
         return datasets.buscar(d -> d.getId().equals(id));
     }
 
-    public void eliminar(String id) {
+    public boolean eliminar(String id) {
         Dataset d = buscarPorId(id);
         if (d != null) {
             datasets.remover(d);
+            return true;
         }
+        return false;
     }
 
     public ConjuntoSobreEnlazada<Dataset> listarDatasets() {
