@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import ucu.edu.labflow.servicio.SimuladorEjecucion;
 import ucu.edu.labflow.modelo.*;
-import ucu.edu.labflow.tda.implementaciones.lineales.cola.ColaEnlazada;
+import ucu.edu.labflow.tda.implementaciones.lineales.lista.ListaEnlazada;
 
 public class SimuladorEjecucionTest {
 
@@ -25,13 +25,13 @@ public class SimuladorEjecucionTest {
                 "tipo",
                 "parametros"
         );
-        return new Experimento(id, dataset, modelo, EstadoExperimento.PENDIENTE);
+        return new Experimento(id, dataset, modelo);
     }
 
     @Test
     public void testEjecutarConColaVacia() {
         simulador.ejecutarSiguiente();
-        ColaEnlazada<Experimento> historial = simulador.getHistorial();
+        ListaEnlazada<Experimento> historial = simulador.getHistorial();
         assertTrue(historial.esVacio());
     }
 
@@ -52,10 +52,10 @@ public class SimuladorEjecucionTest {
         Experimento exp = crearExperimento(1);
         simulador.ponerEnCola(exp);
         simulador.ejecutarSiguiente();
-        ColaEnlazada<Experimento> historial = simulador.getHistorial();
+        ListaEnlazada<Experimento> historial = simulador.getHistorial();
         assertFalse(historial.esVacio());
-        Experimento enHistorial = historial.quitaDeCola();
-        assertEquals(exp.getId(), enHistorial.getId()); // más robusto
+
+        assertTrue(historial.contiene(exp));
     }
 
     @Test

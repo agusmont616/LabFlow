@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import ucu.edu.labflow.modelo.Dataset;
-import ucu.edu.labflow.modelo.EstadoExperimento;
 import ucu.edu.labflow.modelo.Experimento;
 import ucu.edu.labflow.modelo.Modelo;
 import ucu.edu.labflow.servicio.GestorExperimentos;
@@ -54,8 +53,7 @@ public class GestorExperimentosTest {
                 new Experimento(
                         1,
                         dataset1,
-                        modelo,
-                        EstadoExperimento.PENDIENTE
+                        modelo
                 );
 
         gestor.registrar(experimento);
@@ -73,16 +71,14 @@ public class GestorExperimentosTest {
                 new Experimento(
                         1,
                         dataset1,
-                        modelo,
-                        EstadoExperimento.PENDIENTE
+                        modelo
                 );
 
         Experimento e2 =
                 new Experimento(
                         2,
                         dataset2,
-                        modelo,
-                        EstadoExperimento.PENDIENTE
+                        modelo
                 );
 
         gestor.registrar(e1);
@@ -101,24 +97,21 @@ public class GestorExperimentosTest {
                 new Experimento(
                         1,
                         dataset1,
-                        modelo,
-                        EstadoExperimento.PENDIENTE
+                        modelo
                 );
 
         Experimento e2 =
                 new Experimento(
                         2,
                         dataset1,
-                        modelo,
-                        EstadoExperimento.PENDIENTE
+                        modelo
                 );
 
         Experimento e3 =
                 new Experimento(
                         3,
                         dataset2,
-                        modelo,
-                        EstadoExperimento.PENDIENTE
+                        modelo
                 );
 
         gestor.registrar(e1);
