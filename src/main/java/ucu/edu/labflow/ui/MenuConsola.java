@@ -85,13 +85,12 @@ public class MenuConsola {
         System.out.print("Nomrbe: ");   // registro nomrbe
         String nombre = scanner.nextLine().trim();
 
-        System.out.print("Tamaño: "); // registro tamañp
-        String tamanio = scanner.nextLine().trim();
+        int tamanio = leerInt("Tamaño: ");  // registro tamañp
 
         System.out.print("Tipo: "); // registro tipo
         String tipo = scanner.nextLine().trim();
 
-        if (facade.registrarDataset(id, nombre, contadorExperimentos, tipo)) {
+        if (facade.registrarDataset(id, nombre, tamanio, tipo)) {
             System.out.println("[OK] Dataset registrado");
         } else {
             System.out.println("[!] Error de registro");
@@ -176,12 +175,12 @@ public class MenuConsola {
         String nombre = scanner.nextLine().trim();
 
         System.out.print("Tipo: "); // registro tipo
-        String tamanio = scanner.nextLine().trim();
-
-        System.out.print("Parámetros: "); // registro parámetros
         String tipo = scanner.nextLine().trim();
 
-        if (facade.registrarDataset(id, nombre, contadorExperimentos, tipo)) {
+        System.out.print("Parámetros: "); // registro parámetros
+        String params = scanner.nextLine().trim();
+
+        if (facade.registrarModelo(id, nombre, tipo, params)) {
             System.out.println("[OK] Dataset registrado");
         } else {
             System.out.println("[!] Error de registro");
