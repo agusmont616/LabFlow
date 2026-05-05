@@ -1,10 +1,8 @@
 package ucu.edu.labflow.ui;
  
 import ucu.edu.labflow.modelo.*;
-import ucu.edu.labflow.servicio.*;
 import ucu.edu.labflow.tda.implementaciones.lineales.lista.ListaEnlazada;
 import ucu.edu.labflow.tda.implementaciones.lineales.conjunto.ConjuntoSobreEnlazada;
-import ucu.edu.labflow.tda.implementaciones.lineales.cola.ColaEnlazada;
  
 import java.util.Scanner;
 
