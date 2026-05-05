@@ -5,9 +5,7 @@ import ucu.edu.labflow.servicio.*;
 
 import ucu.edu.labflow.tda.implementaciones.lineales.lista.ListaEnlazada;
 import ucu.edu.labflow.tda.implementaciones.lineales.conjunto.ConjuntoSobreEnlazada;
-import ucu.edu.labflow.tda.implementaciones.lineales.cola.ColaEnlazada;
 
-import ucu.edu.labflow.servicio.*;
 
 public class Facade {
     private final GestorDatasets gestorDatasets;
