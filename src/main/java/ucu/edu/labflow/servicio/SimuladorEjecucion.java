@@ -41,7 +41,7 @@ public class SimuladorEjecucion {
         e.setResultado(resultado);
         e.setEstado(EstadoExperimento.EJECUTADO);
 
-        this.historial.agregar(e);
+        this.historial.agregar(0, e); // SE AGREGA SIEMRPE AL PRINCIPIO
     }
 
     public ListaEnlazada<Experimento> getHistorial() {

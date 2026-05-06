@@ -169,7 +169,7 @@ public class MenuConsola {
         System.out.print("ID: ");   //registro id
         String id = scanner.nextLine().trim();
 
-        System.out.print("Nomrbe: ");   // registro nomrbe
+        System.out.print("Nombre: ");   // registro nomrbe
         String nombre = scanner.nextLine().trim();
 
         System.out.print("Tipo: "); // registro tipo
@@ -179,7 +179,7 @@ public class MenuConsola {
         String params = scanner.nextLine().trim();
 
         if (facade.registrarModelo(id, nombre, tipo, params)) {
-            System.out.println("[OK] Dataset registrado");
+            System.out.println("[OK] Modelo registrado");
         } else {
             System.out.println("[!] Error de registro");
         }
@@ -370,15 +370,15 @@ public class MenuConsola {
     }
 
     private void mostrarHistorial() {
-        ListaEnlazada<Experimento> lista = facade.getHistorial();
+        ListaEnlazada<Experimento> pila = facade.getHistorial();
 
-        if (lista.esVacio()) {
+        if (pila.esVacio()) {
             System.out.println("[~] No hay experimentos en el historial");
             return;
         }
 
-        for (int i = 0; i < lista.getTamanio(); i++) {
-            imprimirExperimento(lista.obtener(i));
+        for (int i = 0; i < pila.getTamanio(); i++) {
+            imprimirExperimento(pila.obtener(i));
         }
     }
 
